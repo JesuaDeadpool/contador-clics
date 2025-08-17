@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const UseContador = () => {
 
     const [counter, setCounter] = useState(0);
 
     const decrementCounter = () => {
-        if (Number(counter) == 0) return;
+        if (counter === 0) return alerts("LLegaste a 0");
 
         setCounter(count => count - 1);
     }
@@ -18,6 +19,13 @@ const UseContador = () => {
 
     const incrementCounter = () => {
         setCounter(count => count + 1);
+    }
+
+    const alerts = (message) => {
+        Swal.fire({
+            title: message,
+            icon: "warning"
+        });
     }
 
     return {
